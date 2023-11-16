@@ -1,6 +1,8 @@
 ############################################################################
 ## This function takes in a Parking Function and counts the number of peaks.
-## Note that peaks cannot occur at the endpoints
+## We do not allow for peaks at the endpoints.
+## Note that we define a peak at index i if for list A, 
+## the elements A[i-1], A[i], A[i+1] satisfy A[i-1] < A[i] > A[i+1].
 ############################################################################
 def countPeaks(parking_function: list[int]) -> int:
     count = 0
@@ -20,7 +22,9 @@ def countTies(parking_function: list[int]) -> int:
 
 ############################################################################
 ## This function takes in a Parking Function and returns the number of valleys
-## Like with counting peaks, we do not allow for valleys at the endpoints
+## Like with counting peaks, we do not allow for valleys at the endpoints.
+## Note that we define a valley at index i if for list A, 
+## the elements A[i-1], A[i], A[i+1] satisfy A[i-1] > A[i] < A[i+1].
 ############################################################################
 def countValleys(parking_function: list[int]) -> int:
 
@@ -53,7 +57,9 @@ def countDes(parking_function: list[int]) -> int:
             count += 1
     return(count)
 ############################################################################
-## Similar to countPfWithPeaksandTies, the function countPf
+## Similar to countPfWithPeaksandTies, the function countPFwithDesTies will
+## return the number of parking functions with the desired number of 
+## descents and ties
 ############################################################################
 def countPFWithDesTies(length: int, des: int, ties: int) -> int:
     Parking_Functions = list(ParkingFunctions(length))
@@ -62,7 +68,9 @@ def countPFWithDesTies(length: int, des: int, ties: int) -> int:
         if countDes(f) == des and countTies(f) == ties:
             count += 1
     return(count)
-
+############################################################################
+## Counts the number of Parking Functions with the desired number of ties.
+############################################################################
 def countPFWithTies(length: int,ties: int) -> int:
     Parking_Functions = list(ParkingFuntions(length))
     count = 0
@@ -70,7 +78,11 @@ def countPFWithTies(length: int,ties: int) -> int:
         if countTies(f) == ties:
             count += 1
     return(count)
-
+############################################################################
+## This function will return the parking functions with the desired number of 
+## valleys and ties. Note that we define a valley at index i if for list A, 
+## the elements A[i-1], A[i], A[i+1] satisfy A[i-1] > A[i] < A[i+1].
+############################################################################
 def countPFWithValleysAndTies(length: int, valleys: int, ties: int) -> int:
     Parking_Functions = list(ParkingFunctions(length))
     count = 0
@@ -78,7 +90,8 @@ def countPFWithValleysAndTies(length: int, valleys: int, ties: int) -> int:
         if countValleys(f) == valleys and countTies(f) == ties:
             count += 1
     return count
-
+############################################################################
+## This is similar to the previous 
 def countPFWithPeaksAndValleysAndTies(length: int, peaks: int, valleys: int, ties: int) -> int:
     Parking_Functions = list(ParkingFunctions(length))
     count = 0
