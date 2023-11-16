@@ -1,11 +1,11 @@
-def countPeaks(parking_function: list) -> int:
+def countPeaks(parking_function: list[int]) -> int:
     count = 0
     for i in range(1, len(parking_function)-1):
         if parking_function[i-1] < parking_function[i] and parking_function[i] > parking_function[i+1]:
             count += 1
     return count
 
-def countTies(parking_function: list) -> int:
+def countTies(parking_function: list[int]) -> int:
     count = 0
     for i in range(len(parking_function)-1):
         if parking_function[i] == parking_function[i+1]:
