@@ -1,76 +1,75 @@
-def countPeaks(pf):
+def countPeaks(parking_function: list) -> int:
     count = 0
-    for i in range(1, len(pf)-1):
-        if pf[i-1] < pf[i] and pf[i] > pf[i+1]:
+    for i in range(1, len(parking_function)-1):
+        if parking_function[i-1] < parking_function[i] and parking_function[i] > parking_function[i+1]:
             count += 1
     return count
 
-def countTies(pf):
+def countTies(parking_function: list) -> int:
     count = 0
-    for i in range(len(pf)-1):
-        if pf[i] == pf[i+1]:
+    for i in range(len(parking_function)-1):
+        if parking_function[i] == parking_function[i+1]:
             count += 1
     return count
 
-def countValleys(pf):
+def countValleys(parking_function: list) -> int:
     count = 0
     for i in range(1,len(pf)-1):
-        if pf[i-1] > pf[i] and pf[i] < pf[i+1]:
+        if parking_function[i-1] > parking_function[i] and parking_function[i] < parking_function[i+1]:
             count += 1
     return count
 
-def countPfWithPeaksAndTies(n, peaks, ties):
-    PF = list(ParkingFunctions(n))
+def countPfWithPeaksAndTies(length: int, peaks: int, ties: int) -> int:
+    Parking_Functions = list(ParkingFunctions(length))
     count = 0
-    for f in PF:
+    for f in Parking_Functions:
         if countPeaks(f) == peaks and countTies(f) == ties:
             count += 1
     return count
 
-def countDes(pf: list):
+def countDes(parking_function: list) -> int:
     count = 0
-    for j in range(len(pf)-1):
+    for j in range(len(parking_function)-1):
         if pf[j] > pf[j+1]:
             count += 1
     return(count)
 
-def countPFWithDesTies(n: int, des: int, ties: int) -> int:
-    PF = list(ParkingFunctions(n))
+def countPFWithDesTies(length: int, des: int, ties: int) -> int:
+    Parking_Functions = list(ParkingFunctions(length))
     count = 0
-    for f in PF:
+    for f in Parking_Functions:
         if countDes(f) == des and countTies(f) == ties:
             count += 1
     return(count)
 
-def countPFWithTies(n,ties):
-    PF = list(ParkingFuntions(n))
+def countPFWithTies(length: int,ties: int) -> int:
+    Parking_Functions = list(ParkingFuntions(length))
     count = 0
-    for f in PF:
+    for f in Parking_Functions:
         if countTies(f) == ties:
             count += 1
     return(count)
 
-def countPfWithValleysAndTies(n, valleys, ties):
-    PF = list(ParkingFunctions(n))
+def countPfWithValleysAndTies(length: int, valleys: int, ties: int) -> int:
+    Parking_Functions = list(ParkingFunctions(length))
     count = 0
-    for f in PF:
+    for f in Parking_Functions:
         if countValleys(f) == valleys and countTies(f) == ties:
             count += 1
     return count
 
-def countPfWithPeaksAndValleysAndTies(n, peaks, valleys, ties):
-    PF = list(ParkingFunctions(n))
+def countPfWithPeaksAndValleysAndTies(length: int, peaks: int, valleys: int, ties: int) -> int:
+    Parking_Functions = list(ParkingFunctions(length))
     count = 0
-    for f in PF:
+    for f in Parking_Functions:
         if countValleys(f) == valleys and countTies(f) == ties and countPeaks(f) == peaks:
-            print(f)
             count += 1
     return count
 
-def pfWithPeaksAndTies(n: int,peaks: int,ties: int) -> list:
-    PF = list(ParkingFunctions(n))
+def pfWithPeaksAndTies(length: int,peaks: int,ties: int) -> list:
+    Parking_Functions = list(ParkingFunctions(length))
     ret_list = []
-    for f in PF:
+    for f in Parking_Functions:
         if countPeaks(f) == peaks and countTies(f) == ties:
             ret_list.append(f)
     return ret_list
